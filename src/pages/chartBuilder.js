@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Grid from '@mui/material/Grid'
-import ChartPreview from "@/components/ChartPreview"
-import Config from "@/components/Config"
+import {useRouter} from "next/router"
 
 const chartBuilder = () => {
-    const [preview, setPreview] = useState({
-        type: "Bar",
-        backgroundColor: "ffffff"
-    })
-
+  const router = useRouter()
   return (
-    <div className="w-screen h-screen p-10">
-    <Grid container sx={{width: "100%", padding: 0}}>
-        <Grid item sx={{width: "70%", border: "1px solid gray", padding: 5}}>
-            <ChartPreview preview={preview} />
-        </Grid>
-
-        <Grid item sx={{width: "30%", border: "1px solid black", padding: 5}}>
-            <Config preview={preview} setPreview={setPreview} />
-        </Grid>
-    </Grid>
+    <div className="w-full flex justify-center items-center h-screen gap-5">
+        <button onClick={() => router.push('/chartBuilder/barChart')}>Bar Chart</button>
+        <button>Line Chart</button>
+        <button>Pie Chart</button>
     </div>
   )
 }
