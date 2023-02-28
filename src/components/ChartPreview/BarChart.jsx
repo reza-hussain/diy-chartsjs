@@ -29,18 +29,14 @@ const BarChart = () => {
   const data = {
   
     labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => Math.random()),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Dataset 2',
-        data: labels.map(() => Math.random()),
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
+    datasets: barChart.datasets.map((set) => {
+      return{
+        label: set.name,
+        data: labels.map(() => Math.random() * 100),
+        backgroundColor: `#${set.color}`,
+        pointStyle: set.shape === "circle" ? "circle" : "rectRounded",
+      }
+    },)
   };
 
 
@@ -55,8 +51,7 @@ const BarChart = () => {
       bar:{
         borderColor: "",
         borderWidth: "",
-        borderRadius: "",
-        inflateAmount: 10,
+        borderRadius: 20,
       }
     },
     plugins: {
@@ -66,7 +61,7 @@ const BarChart = () => {
         align: 'center',
   
         labels: {
-          
+          usePointStyle: true
         }
       },
       title: {

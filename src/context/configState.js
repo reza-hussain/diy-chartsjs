@@ -1,6 +1,9 @@
 const configState = {
+    modalOpen: false,
     barChart : {
-        labels:[]
+        labels:[],
+        datasets: [],
+        
     }
 }
 
